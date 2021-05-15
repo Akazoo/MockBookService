@@ -3,6 +3,7 @@ package pl.coderslab.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.Interface.BookService;
 import pl.coderslab.Model.Book;
 import pl.coderslab.Service.MemoryBookService;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private MemoryBookService memoryBookService;
+    private BookService memoryBookService;
 
     @GetMapping
     public List<Book> getBooks() {

@@ -1,14 +1,16 @@
 package pl.coderslab.Service;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import pl.coderslab.Interface.BookService;
 import pl.coderslab.Model.Book;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MemoryBookService {
+@Primary
+public class MemoryBookService implements BookService {
 
     List<Book> bookList;
     private static Long nextId = 4L;
@@ -44,7 +46,7 @@ public class MemoryBookService {
         } else {
             return new Book();
         }
-    }
+    } //done
 
     public Book deleteBook(Long id) {
 
@@ -80,5 +82,4 @@ public class MemoryBookService {
                 .filter(x -> x.getId().equals(id))
                 .findFirst();
     } //done
-
 }
