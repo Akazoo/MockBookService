@@ -1,11 +1,9 @@
 package pl.coderslab.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.Interface.BookService;
 import pl.coderslab.Model.Book;
-import pl.coderslab.Service.MemoryBookService;
 
 import java.util.List;
 
@@ -15,8 +13,11 @@ import java.util.List;
 
 public class BookController {
 
-    @Autowired
-    private BookService memoryBookService;
+    private final BookService memoryBookService;
+
+    public BookController(BookService memoryBookService) {
+        this.memoryBookService = memoryBookService;
+    }
 
     @GetMapping
     public List<Book> getBooks() {
@@ -47,5 +48,4 @@ public class BookController {
 
         return memoryBookService.deleteBook(id);
     } //done
-
 }
